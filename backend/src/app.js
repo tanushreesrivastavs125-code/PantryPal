@@ -25,6 +25,7 @@ import aiRecommendationRoutes from "./routes/aiRecommendationRoutes.js";
 import recipeServingScalingRoutes from "./routes/recipeServingScalingRoutes.js";
 import userPreferenceRoutes from "./routes/userPreferenceRoutes.js";
 import aiChatRoutes from "./routes/aiChatRoutes.js";
+import demoRoutes from "./routes/demoRoutes.js";
 
 const app = express();
 
@@ -82,6 +83,7 @@ app.use(
   "/api/v1/recipes/:recipeId",
   recipeServingScalingRoutes
 );
+app.use("/api/v1/demo", demoRoutes);
 
 // 404 & Global Error Handling
 app.use(notFoundHandler);

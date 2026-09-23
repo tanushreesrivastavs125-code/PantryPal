@@ -31,6 +31,7 @@ const SearchPage         = lazy(() => import('./pages/Search/Search'));
 const Notifications      = lazy(() => import('./pages/Notifications/Notifications'));
 const Settings           = lazy(() => import('./pages/Settings/Settings'));
 const Profile            = lazy(() => import('./pages/Profile'));
+const DemoHub            = lazy(() => import('./pages/DemoHub'));
 
 // ── Page transition wrapper ───────────────────────────────
 const PageTransition = ({ children }) => {
@@ -82,6 +83,8 @@ const AppLayout = () => {
             <Route path="/settings"            element={<Settings />} />
             <Route path="/preferences"         element={<Settings />} />
             <Route path="/profile"             element={<Profile />} />
+            <Route path="/demo"                element={<DemoHub />} />
+            <Route path="/viva-demo"           element={<DemoHub />} />
             <Route path="*"                    element={<NotFound />} />
           </Routes>
         </PageTransition>

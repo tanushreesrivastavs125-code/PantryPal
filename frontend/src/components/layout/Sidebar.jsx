@@ -33,6 +33,7 @@ const NAV_AI_TOOLS = [
 
 const NAV_SETTINGS = [
   { to: '/preferences',        icon: Settings,        label: 'Settings' },
+  { to: '/demo',               icon: BookOpen,        label: 'Viva Demos' },
 ];
 
 const Sidebar = ({ onClose }) => {

@@ -44,7 +44,7 @@ Use this document to prepare for your viva. It tells you exactly which files to 
 | Concept | Status | Where in PantryPal | How to Defend in Viva |
 | :--- | :---: | :--- | :--- |
 | **Relational schema (PK/FK)** (Mandatory) | ✅ | `prisma/schema.prisma` | Show the `@id` and `@relation(fields: [userId])` decorators. |
-| **SQL JOINs** (Mandatory) | ✅ | `src/services/aiChatService.js` | Show the `include: { items: true }` Prisma queries which execute as SQL JOINs. |
+| **SQL JOINs** (Mandatory, 0.2 pts) | ✅ | `backend/prisma/migrations/20260809133848_init/migration.sql` + `backend/src/demo/sql_joins_demo.sql` + `backend/src/services/sqlJoinsService.js` | Show the raw SQL `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, and `FULL OUTER JOIN` queries and views in `migration.sql` and `sqlJoinsService.js` (using Prisma `$queryRaw`). Explain when to choose INNER vs LEFT JOIN in pantry inventory queries. |
 | **Filtering, ordering, grouping** | ✅ | `src/services/mealPlanService.js` | Show `orderBy: { startDate: "asc" }` and `where` filtering. |
 | **ORM usage** | ✅ | `src/services/*.js` | Discuss why you chose Prisma (type safety, migrations) over raw SQL. |
 | **Transactions** | ✅ | `src/services/mealPlanService.js` | Show `prisma.$transaction(async (tx) => ...)` and explain why atomic operations prevent partial meal plan creation. |
@@ -75,7 +75,7 @@ Use this document to prepare for your viva. It tells you exactly which files to 
 
 | Concept | Status | Where in PantryPal | How to Defend in Viva |
 | :--- | :---: | :--- | :--- |
-| **LLM API integration** (Mandatory) | ✅ | `src/services/aiService.js` | Show the `@google/genai` SDK integration. Explain the model used (`gemini-2.5-flash-lite`) and why. |
+| **LLM API integration** (Mandatory, 0.2 pts) | ✅ | `backend/src/demo/llmApiIntegrationDemo.js` + `backend/src/services/aiService.js` + `frontend/src/demo/LlmIntegrationDemo.jsx` | Show the `@google/genai` SDK integration with Gemini (`gemini-2.5-flash-lite`). Explain grounded prompt context injection, strict JSON schema output via `responseSchema`, AbortController timeout protection, and MongoDB audit logging (`AiInteractionLog`). |
 | **Prompt engineering** (Mandatory) | ✅ | `src/utils/aiChatContextBuilder.js` | Show how you dynamically inject live pantry stock data into the prompt context, grounding the AI in reality. |
 | **Structured outputs** (Mandatory) | ✅ | `src/schemas/aiChatSchema.js` | Explain how forcing a JSON response schema prevents the AI from returning unparseable text, making the integration reliable. |
 | **Prompt injection defenses** | ✅ | `src/services/aiChatService.js` | Defend your system instructions ("Rely strictly on the user's pantry... Never invent ingredients that are not in the pantry..."). |
@@ -92,7 +92,8 @@ Use this document to prepare for your viva. It tells you exactly which files to 
 | **Custom Hooks** (Mandatory) | ✅ | `frontend/src/hooks/usePantry.js` | Explain why you extracted `usePantry()` — it's reusable across Dashboard and Pantry pages without duplicating fetch logic. |
 | **React Context API** (Mandatory) | ✅ | `frontend/src/context/AuthContext.jsx` + `ToastContext.jsx` | Show `createContext()`, `useContext()`, and the `Provider` pattern for sharing global auth state. |
 | **Client-side Routing** (Mandatory) | ✅ | `frontend/src/App.jsx` | Show `<Routes>`, `<Route path="/pantry">`, `<NavLink>`, and `<Navigate>` in `ProtectedRoute`. |
-| **Async data fetching / Promises** (Mandatory) | ✅ | `frontend/src/hooks/usePantry.js` | Show `Promise.all([getPantryItems(), getExpiringItems(), getLowStockItems()])` — 3 APIs fetched in parallel. |
+| **Async data fetching from API** (Mandatory, 0.2 pts) | ✅ | `frontend/src/demo/asyncDataFetchingDemo.js` + `frontend/src/demo/AsyncDataFetchingDemo.jsx` + `frontend/src/hooks/usePantry.js` | Show `Promise.all([getPantryItems(), getExpiringItems(), getLowStockItems()])`, `AbortController` cancellation, `axios` error handling, and exponential backoff retry. |
+| **JavaScript — Promises vs callbacks** (0.1 pts) | ✅ | `frontend/src/demo/promisesVsCallbacksDemo.js` + `frontend/src/demo/PromisesVsCallbacksDemo.jsx` | Show side-by-side comparison of error-first callbacks, callback hell (pyramid of doom), promisification wrapper, promise chaining (.then), and modern async/await with try/catch. |
 | **Protected Routes** (Mandatory) | ✅ | `frontend/src/components/ProtectedRoute.jsx` | Explain how checking `token` state before rendering children redirects unauthenticated users to `/login`. |
 | **Form Handling** (Mandatory) | ✅ | `frontend/src/pages/Login.jsx` + `Pantry.jsx` | Show `react-hook-form` `register()`, `handleSubmit()`, and `errors` for client-side validation. |
 | **HTTP Client / Axios Interceptors** | ✅ | `frontend/src/services/api.js` | Show the `api.interceptors.request.use()` that automatically attaches the JWT `Bearer` token to every outgoing request. |
