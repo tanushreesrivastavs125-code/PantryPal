@@ -127,7 +127,7 @@ The interface emphasizes large spacing, rounded corners, soft shadows, smooth tr
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/code-jatin0112/PantryPal.git
+   git clone https://github.com/tanushreesrivastavs125-code/PantryPal.git
    cd PantryPal
    ```
 
@@ -163,7 +163,7 @@ npm test
 - Prompt Injection defenses for AI APIs
 
 ## Project Documentation
-- [Product Requirements Document (PRD)](./docs/PRD.md)
-- [High-Level Design (HLD)](./docs/HLD.md)
-- [Low-Level Design (LLD)](./docs/LLD.md)
+- [Product Requirements Document (PRD)](./PRD.md)
+- [High-Level Design (HLD)](./HLD.md)
+- [Low-Level Design (LLD)](./LLD.md)
 - [Project Score Mapping](./docs/PROJECT_SCORE_MAPPING.md)
